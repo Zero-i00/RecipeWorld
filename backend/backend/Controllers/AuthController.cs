@@ -3,6 +3,9 @@ using backend.Data;
 using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using backend.Services;
+using backend.DTO.Auth;
+using backend.Mapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers;
 
@@ -20,10 +23,10 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register(string username, string password)
+    public async Task<IActionResult> Register([FromBody] RegisterQuery registerQuery)
     {
-        var hashedPassword = _authenticationService.HashPassword(password);
-        var user = new User { Username = username, Password = hashedPassword };
+        /*var hashedPassword = _authenticationService.HashPassword(password);*/
+        var user = registerQuery.ToUserFromRegisterDto();
         _context.Users.Add(user);
         await _context.SaveChangesAsync();
 
@@ -31,21 +34,24 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public IActionResult Login(string username, string password)
+    public async Task<IActionResult> Login([FromBody] LoginQuery loginQuery)
     {
-        var user = _context.Users.SingleOrDefault(u => u.Username == username);
+        var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == loginQuery.Username);
         if (user == null)
         {
             return Unauthorized("User not found.");
         }
 
-        var isPasswordValid = _authenticationService.VerifyPassword(password, user.Password);
+        var isPasswordValid = _authenticationService.VerifyPassword(loginQuery.Password, user.Password);
         if (!isPasswordValid)
         {
             return Unauthorized("Invalid password.");
         }
 
-        var token = _authenticationService.GenerateJwtToken(username);
-        return Ok(new { token });
+        var token = _authenticationService.GenerateJwtToken(loginQuery.Username);
+        return Ok(new {
+            user,
+            token
+        });
     }
 }

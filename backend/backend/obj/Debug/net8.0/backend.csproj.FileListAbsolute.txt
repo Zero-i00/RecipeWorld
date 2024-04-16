@@ -26,7 +26,6 @@ C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\staticweb
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.backend.props
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\scopedcss\bundle\backend.styles.css
-C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\backend.csproj.Up2Date
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\backend.dll
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\refint\backend.dll
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\backend.pdb
@@ -153,3 +152,4 @@ C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\Scrutor.d
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\backend.csproj.CopyComplete

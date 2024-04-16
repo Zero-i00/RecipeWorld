@@ -2,6 +2,7 @@ using backend.Constants;
 using backend.Data;
 using backend.DTO.Ingredient;
 using backend.Mapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers;
@@ -18,6 +19,7 @@ public class IngredientController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [Authorize]
     public async Task<IActionResult> Retrieve([FromRoute] int id)
     {
         var ingredient = await _context.Ingredients.FindAsync(id);
@@ -30,6 +32,7 @@ public class IngredientController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Create([FromBody] IngredientQuery ingredientDto)
     {
         var ingredientModel = ingredientDto.ToIngredientFromCreateDto();
@@ -40,6 +43,7 @@ public class IngredientController : ControllerBase
     }
     
     [HttpPut("{id}")]
+    [Authorize]
     public async Task<IActionResult> Update([FromRoute] int id, [FromBody] IngredientQuery ingredientDto)
     {
         var ingredient = await _context.Ingredients.FindAsync(id);
@@ -54,11 +58,12 @@ public class IngredientController : ControllerBase
         ingredient.RecipeId = ingredientDto.RecipeId;
         await _context.SaveChangesAsync();
 
-        return NoContent();
+        return Ok(ingredient);
     }
 
     
     [HttpDelete("{id}")]
+    [Authorize]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
         var ingredient = await _context.Ingredients.FindAsync(id);

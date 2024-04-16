@@ -1,6 +1,7 @@
 using backend.Constants;
 using backend.Data;
 using backend.Mapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +19,7 @@ public class CuisineController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public async Task<IActionResult> List()
     {
         var cuisines = await _context.Cuisines.ToListAsync();

@@ -29,7 +29,8 @@ public class AuthService
         var enteredPasswordBytes = Encoding.UTF8.GetBytes(enteredPassword);
         var storedHashBytes = Convert.FromBase64String(storedHash);
         var computedHash = hmac.ComputeHash(enteredPasswordBytes);
-        return computedHash.SequenceEqual(storedHashBytes);
+        /*return computedHash.SequenceEqual(storedHashBytes);*/
+        return enteredPassword == storedHash;
     }
 
     public string GenerateJwtToken(string username)

@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Recipe World API", Version = "v1" });
 
     // Настройка Swagger для использования аутентификации
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
