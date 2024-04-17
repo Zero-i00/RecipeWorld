@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "tPmO83xb64qqX+dD7b/3WaLA708S64MOy5RL9lys5iqNz7uwEG4jnPLpz+O877PvIntIyijvrlMFEYTIJ6frJg==",
+  "dgSpecHash": "fiZ/AqM1G5SUEjWtz46KiO93aPx6AfVWybO5zHDq1wxKnXK7613vLFmSSQxivdjrY09Q1c0pZZm+XmshAALD9A==",
   "success": true,
   "projectFilePath": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mrshe\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\mrshe\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
+    "C:\\Users\\mrshe\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\mrshe\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\mrshe\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.4\\microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512",
     "C:\\Users\\mrshe\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.4\\microsoft.aspnetcore.openapi.8.0.4.nupkg.sha512",

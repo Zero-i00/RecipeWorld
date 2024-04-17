@@ -14,23 +14,15 @@ public class AuthService
     {
         _configuration = configuration;
     }
-        
+
     public string HashPassword(string password)
     {
-        using var hmac = new HMACSHA512();
-        var passwordBytes = Encoding.UTF8.GetBytes(password);
-        var hashBytes = hmac.ComputeHash(passwordBytes);
-        return Convert.ToBase64String(hashBytes);
+        return BCrypt.Net.BCrypt.HashPassword(password);
     }
-    
-    public bool VerifyPassword(string enteredPassword, string storedHash)
+
+    public bool VerifyPassword(string password, string hashedPassword)
     {
-        using var hmac = new HMACSHA512();
-        var enteredPasswordBytes = Encoding.UTF8.GetBytes(enteredPassword);
-        var storedHashBytes = Convert.FromBase64String(storedHash);
-        var computedHash = hmac.ComputeHash(enteredPasswordBytes);
-        /*return computedHash.SequenceEqual(storedHashBytes);*/
-        return enteredPassword == storedHash;
+        return BCrypt.Net.BCrypt.Verify(password, hashedPassword);
     }
 
     public string GenerateJwtToken(string username)

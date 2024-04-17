@@ -25,9 +25,10 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterQuery registerQuery)
     {
-        /*var hashedPassword = _authenticationService.HashPassword(password);*/
-        var user = registerQuery.ToUserFromRegisterDto();
-        _context.Users.Add(user);
+        var userDto = registerQuery.ToUserFromRegisterDto();
+        var hashedPassword = _authenticationService.HashPassword(userDto.Password);
+        userDto.Password = hashedPassword;
+        _context.Users.Add(userDto);
         await _context.SaveChangesAsync();
 
         return Ok();
@@ -36,19 +37,20 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginQuery loginQuery)
     {
-        var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == loginQuery.Username);
+        var userDto = loginQuery.ToUserFromLoginDto();
+        var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == userDto.Username);
         if (user == null)
         {
             return Unauthorized("User not found.");
         }
 
-        var isPasswordValid = _authenticationService.VerifyPassword(loginQuery.Password, user.Password);
+        var isPasswordValid = _authenticationService.VerifyPassword(userDto.Password, user.Password);
         if (!isPasswordValid)
         {
             return Unauthorized("Invalid password.");
         }
 
-        var token = _authenticationService.GenerateJwtToken(loginQuery.Username);
+        var token = _authenticationService.GenerateJwtToken(userDto.Username);
         return Ok(new {
             user,
             token

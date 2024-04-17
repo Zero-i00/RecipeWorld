@@ -5,7 +5,7 @@ namespace backend.Data;
 
 public class ApplicationDBContext : DbContext
 {
-    public ApplicationDBContext(DbContextOptions dbContextOptions)
+    public ApplicationDBContext(DbContextOptions<ApplicationDBContext> dbContextOptions)
         : base(dbContextOptions) {}
     
     public DbSet<User> Users { get; set; }
