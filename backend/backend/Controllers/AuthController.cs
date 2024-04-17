@@ -26,6 +26,12 @@ public class AuthController : ControllerBase
     public async Task<IActionResult> Register([FromBody] RegisterQuery registerQuery)
     {
         var userDto = registerQuery.ToUserFromRegisterDto();
+
+        var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == userDto.Username);
+        if (user != null) {
+            return Conflict("User already exists.");
+        }
+
         var hashedPassword = _authenticationService.HashPassword(userDto.Password);
         userDto.Password = hashedPassword;
         _context.Users.Add(userDto);
