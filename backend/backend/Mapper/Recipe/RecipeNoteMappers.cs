@@ -1,4 +1,3 @@
-using backend.DTO.Ingredient;
 using backend.DTO.Recipe.Note;
 using backend.Models;
 
@@ -16,7 +15,7 @@ public static class RecipeNoteMappers
         };
     }
 
-    public static RecipeNote ToReciperNoteFromCreateDto(this RecipeNoteQuery recipeNoteQuery)
+    public static RecipeNote ToRecipeNoteFromCreateDto(this RecipeNoteQuery recipeNoteQuery)
     {
         return new RecipeNote
         {

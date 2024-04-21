@@ -22,7 +22,7 @@ public class Recipe
     public int Id { get; set; }
 
     [Column("images")]
-    public byte[][] Images { get; set; } // Предполагается, что это массив байтов для хранения изображений
+    public string[] Images { get; set; } // Предполагается, что это массив байтов для хранения изображений
 
     [Required]
     [Column("title")]
@@ -68,7 +68,7 @@ public class Recipe
     public RecipeTypeEnum Type { get; set; }
 
     [Column("created_at")]
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     
     

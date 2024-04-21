@@ -1,77 +1,148 @@
-using backend.Constants;
 using backend.Data;
-using backend.DTO.Recipe.Note;
-using backend.Mapper.Recipe;
+using backend.Mappers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Controllers.Recipe;
 
-
-[Route($"{ApiConstants.BaseUrl}/recipes")]
 [ApiController]
-public class RecipeController : ControllerBase
+[Route("api/recipes")]
+public class RecipesController : ControllerBase
 {
     private readonly ApplicationDBContext _context;
 
-    public RecipeController(ApplicationDBContext context)
+    public RecipesController(ApplicationDBContext context)
     {
         _context = context;
     }
+    
+    [HttpGet("{id}/ingredients")]
+    [Authorize]
+    public async Task<ActionResult> GetRecipeIngredients([FromRoute] int id)
+    {
+        var recipe = await _context.Recipes
+            .Include(r => r.Ingredients)
+            .FirstOrDefaultAsync(r => r.Id == id);
 
+        if (recipe == null)
+        {
+            return NotFound();
+        }
+
+
+        return Ok(recipe.Ingredients.ToList());
+    }
+    
+    [HttpGet("{id}/comments")]
+    [Authorize]
+    public async Task<ActionResult> GetRecipeComments([FromRoute] int id)
+    {
+        var recipe = await _context.Recipes
+            .Include(r => r.Comments)
+            .FirstOrDefaultAsync(r => r.Id == id);
+
+        if (recipe == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(recipe.Comments.ToList());
+    }
+    
+    [HttpGet("{id}/instruction_steps")]
+    [Authorize]
+    public async Task<ActionResult> GetRecipeInstructionSteps([FromRoute] int id)
+    {
+        var recipe = await _context.Recipes
+            .Include(r => r.InstructionSteps)
+            .FirstOrDefaultAsync(r => r.Id == id);
+
+        if (recipe == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(recipe.InstructionSteps.ToList());
+    }
+    
+    [HttpGet("{id}/recipe_notes")]
+    [Authorize]
+    public async Task<ActionResult> GetRecipeNotes([FromRoute] int id)
+    {
+        var recipe = await _context.Recipes
+            .Include(r => r.RecipeNotes)
+            .FirstOrDefaultAsync(r => r.Id == id);
+
+        if (recipe == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(recipe.RecipeNotes.ToList());
+    }
+    
     [HttpGet("{id}")]
     [Authorize]
     public async Task<IActionResult> Retrieve([FromRoute] int id)
     {
-        var note = await _context.RecipeNotes.FindAsync(id);
-        if (note == null)
+        var recipe = await _context.Recipes.FindAsync(id);
+        if (recipe == null)
         {
             return NotFound();
         }
 
-        return Ok(note.ToRecipeNoteDto());
+        return Ok(recipe.ToRecipeDto());
     }
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Create([FromBody] RecipeNoteQuery noteDto)
+    public async Task<IActionResult> Create([FromBody] RecipeQuery recipeDto)
     {
-        var noteModel = noteDto.ToReciperNoteFromCreateDto();
-        _context.RecipeNotes.Add(noteModel);
+        var recipeModel = recipeDto.ToRecipeFromCreateDto();
+        _context.Recipes.Add(recipeModel);
         await _context.SaveChangesAsync();
 
-        return CreatedAtAction(nameof(Retrieve), new { id = noteModel.Id }, noteModel.ToRecipeNoteDto());
+        return CreatedAtAction(nameof(Retrieve), new {id = recipeModel.Id}, recipeModel.ToRecipeDto());
     }
-
+    
     [HttpPut("{id}")]
     [Authorize]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] RecipeNoteQuery noteDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] RecipeQuery recipeDto)
     {
-        var note = await _context.RecipeNotes.FindAsync(id);
-        if (note == null)
+        var recipe = await _context.Recipes.FindAsync(id);
+        if (recipe == null)
         {
             return NotFound();
         }
 
-        note.Text = noteDto.Text;
-        note.RecipeId = noteDto.RecipeId;
+        recipe.Images = recipeDto.Images;
+        recipe.Title = recipeDto.Title;
+        recipe.Description = recipeDto.Description;
+        recipe.PrepTime = recipeDto.PrepTime;
+        recipe.CookTime = recipeDto.CookTime;
+        recipe.Serving = recipeDto.Serving;
+        recipe.Proteins = recipeDto.Proteins;
+        recipe.Fats = recipeDto.Fats;
+        recipe.Carbs = recipeDto.Carbs;
+        recipe.Type = recipeDto.Type;
+        recipe.CuisineId = recipeDto.CuisineId;
         await _context.SaveChangesAsync();
 
-        return Ok(note);
+        return Ok(recipe);
     }
-
-
+    
     [HttpDelete("{id}")]
     [Authorize]
     public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        var note = await _context.RecipeNotes.FindAsync(id);
-        if (note == null)
+        var recipe = await _context.Recipes.FindAsync(id);
+        if (recipe == null)
         {
             return NotFound();
         }
 
-        _context.RecipeNotes.Remove(note);
+        _context.Recipes.Remove(recipe);
         await _context.SaveChangesAsync();
 
         return NoContent();

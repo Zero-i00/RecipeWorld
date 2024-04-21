@@ -32,7 +32,7 @@ namespace backend.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     username = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     password = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    avatar = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    avatar = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     first_name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
                     last_name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false)
                 },

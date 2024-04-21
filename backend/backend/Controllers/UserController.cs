@@ -2,6 +2,7 @@
 using backend.Data;
 using backend.DTO.Auth;
 using backend.DTO.User;
+using backend.Mapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,24 +31,29 @@ namespace backend.Controllers
                 return NotFound();
             }
 
-            return Ok(user);
+            return Ok(user.ToUserDto());
         }
 
         [HttpGet("{id}/recipes_list")]
         [Authorize]
-        public async Task<IActionResult> GetUserRecipesList([FromRoute] int id)
+        public async Task<ActionResult> GetUserRecipesList([FromRoute] int id)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null) {
+            var user = await _context.Users
+                .Include(r => r.Recipes)
+                .FirstOrDefaultAsync(r => r.Id == id);
+
+            if (user == null)
+            {
                 return NotFound();
             }
+
 
             return Ok(user.Recipes.ToList());
         }
 
         [HttpPut("{id}")]
         [Authorize]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UserQuery userDto)
+        public async Task<IActionResult> Update([FromRoute] int id, [FromForm] UserQuery userDto)
         {
             var user = await _context.Users.FindAsync(id);
             if (user == null)
@@ -57,14 +63,13 @@ namespace backend.Controllers
 
 
             user.Username = userDto.Username;
-            user.Password = userDto.Password;
             user.Avatar = userDto.Avatar;
             user.FirstName = userDto.FirstName;
             user.LastName = userDto.LastName;
 
             await _context.SaveChangesAsync();
 
-            return Ok(user);
+            return Ok(user.ToUserDto());
         }
 
 

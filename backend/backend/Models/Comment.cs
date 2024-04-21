@@ -21,7 +21,7 @@ public class Comment
     public string Text { get; set; } = string.Empty;
 
     [Column("created_at")]
-    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     
     [Required]

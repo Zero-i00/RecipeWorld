@@ -33,7 +33,7 @@ public class CommentController : ControllerBase
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Create([FromBody] CommentQuery commentDto)
+    public async Task<IActionResult> Create([FromForm] CommentQuery commentDto)
     {
         var commentModel = commentDto.ToCommentFromCreateDto();
         _context.Comments.Add(commentModel);
@@ -44,7 +44,7 @@ public class CommentController : ControllerBase
     
     [HttpPut("{id}")]
     [Authorize]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] CommentQuery commentDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromForm] CommentQuery commentDto)
     {
         var comment = await _context.Comments.FindAsync(id);
         if (comment == null)
@@ -59,7 +59,7 @@ public class CommentController : ControllerBase
         
         await _context.SaveChangesAsync();
 
-        return Ok(comment);
+        return Ok(comment.ToCommentDto());
     }
 
     

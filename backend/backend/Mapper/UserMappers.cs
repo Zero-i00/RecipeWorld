@@ -6,18 +6,18 @@ namespace backend.Mapper;
 
 public static class UserMappers
 {
-    public static User ToUserFromCreateDto(this UserQuery userModel) 
+    public static UserDto ToUserDto(this User userModel)
     {
-        return new User
+        return new UserDto()
         {
+            Id = userModel.Id.ToString(),
             Username = userModel.Username,
-            Password = userModel.Password,
-            Avatar = userModel.Avatar,
             FirstName = userModel.FirstName,
             LastName = userModel.LastName,
+            Avatar = userModel.Avatar
         };
     }
-
+    
     public static User ToUserFromLoginDto(this LoginQuery loginQuery)
     {
         return new User

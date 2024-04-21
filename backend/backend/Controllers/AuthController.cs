@@ -4,6 +4,7 @@ using backend.Models;
 using Microsoft.AspNetCore.Mvc;
 using backend.Services;
 using backend.DTO.Auth;
+using backend.DTO.User;
 using backend.Mapper;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,7 +24,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterQuery registerQuery)
+    public async Task<IActionResult> Register([FromForm] RegisterQuery registerQuery)
     {
         var userDto = registerQuery.ToUserFromRegisterDto();
 
@@ -41,7 +42,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginQuery loginQuery)
+    public async Task<IActionResult> Login([FromForm] LoginQuery loginQuery)
     {
         var userDto = loginQuery.ToUserFromLoginDto();
         var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == userDto.Username);
@@ -58,8 +59,7 @@ public class AuthController : ControllerBase
 
         var token = _authenticationService.GenerateJwtToken(userDto.Username);
         return Ok(new {
-            user,
-            token
+            accessToken = token
         });
     }
 }

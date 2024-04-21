@@ -24,7 +24,7 @@ public class User
     public string Password { get; set; }
 
     [Column("avatar")]
-    public byte[]? Avatar { get; set; }
+    public string[]? Avatar { get; set; }
 
     [Required]
     [Column("first_name")]

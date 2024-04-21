@@ -1,9 +1,8 @@
 using backend.Models;
 
-
 public class RecipeQuery
 {
-    public byte[][] Images { get; set; }
+    public string[] Images { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public float PrepTime { get; set; }
@@ -15,8 +14,4 @@ public class RecipeQuery
     public RecipeTypeEnum Type { get; set; }
     public int UserId { get; set; }
     public int? CuisineId { get; set; }
-
-    public virtual ICollection<Ingredient> Ingredients { get; set; }
-    public virtual ICollection<RecipeInstructionStep> InstructionSteps { get; set; }
-    public virtual ICollection<RecipeNote> RecipeNotes { get; set; }
 }

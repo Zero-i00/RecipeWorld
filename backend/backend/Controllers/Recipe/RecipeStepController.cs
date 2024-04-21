@@ -33,7 +33,7 @@ public class RecipeStepController : ControllerBase
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Create([FromBody] RecipeStepQuery stepDto)
+    public async Task<IActionResult> Create([FromForm] RecipeStepQuery stepDto)
     {
         var stepModel = stepDto.ToRecipeStepFromCreateDto();
         _context.RecipeInstructionSteps.Add(stepModel);
@@ -44,7 +44,7 @@ public class RecipeStepController : ControllerBase
 
     [HttpPut("{id}")]
     [Authorize]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] RecipeStepQuery stepDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromForm] RecipeStepQuery stepDto)
     {
         var step = await _context.RecipeInstructionSteps.FindAsync(id);
         if (step == null)
@@ -58,7 +58,7 @@ public class RecipeStepController : ControllerBase
 
         await _context.SaveChangesAsync();
 
-        return Ok(step);
+        return Ok(step.ToRecipeStepDto());
     }
 
 

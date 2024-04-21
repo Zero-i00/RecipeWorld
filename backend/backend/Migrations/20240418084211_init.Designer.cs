@@ -12,7 +12,7 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240417053141_init")]
+    [Migration("20240418084211_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -265,8 +265,8 @@ namespace backend.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<byte[]>("Avatar")
-                        .HasColumnType("varbinary(max)")
+                    b.Property<string>("Avatar")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("avatar");
 
                     b.Property<string>("FirstName")
