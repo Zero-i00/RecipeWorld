@@ -12,8 +12,8 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240418084540_UpdateCreatedAtFieldsAnnotaions")]
-    partial class UpdateCreatedAtFieldsAnnotaions
+    [Migration("20240421174427_RemoveJsonConverterFromRecipe")]
+    partial class RemoveJsonConverterFromRecipe
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -158,10 +158,10 @@ namespace backend.Migrations
                         .HasColumnType("real")
                         .HasColumnName("fats");
 
-                    b.Property<string>("Images")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("images");
+                        .HasColumnName("image");
 
                     b.Property<float>("PrepTime")
                         .HasColumnType("real")

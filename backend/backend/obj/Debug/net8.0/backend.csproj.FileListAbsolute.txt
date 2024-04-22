@@ -153,4 +153,4 @@ C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\Swashbuck
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\bin\Debug\net8.0\BCrypt.Net-Next.dll
-C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\backend.csproj.Up2Date
+C:\Users\mrshe\VsProjects\RecipeWorld\backend\backend\obj\Debug\net8.0\backend.csproj.CopyComplete

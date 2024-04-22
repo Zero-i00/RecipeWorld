@@ -1,0 +1,23 @@
+.input {
+  @apply block mb-6;
+
+  > input {
+    @apply text-sm rounded-lg px-4 py-3 w-full block outline-0 bg-white border-[1px] border-gray;
+    color: rgba(0, 0, 0, 0.80);;
+    transition: box-shadow 0.4s ease;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.03);
+
+    &::placeholder {
+      color: rgba(0, 0, 0, 0.80);
+    }
+
+    &:focus {
+      @apply border-primary;
+    }
+
+  }
+}
+
+.error {
+  @apply w-full text-red-500 my-1;
+}

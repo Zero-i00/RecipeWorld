@@ -12,7 +12,7 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240418084211_init")]
+    [Migration("20240421104157_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -35,7 +35,7 @@ namespace backend.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 
@@ -140,7 +140,7 @@ namespace backend.Migrations
                         .HasColumnName("cook_time");
 
                     b.Property<DateTime>("CreatedAt")
-                        .ValueGeneratedOnAddOrUpdate()
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasColumnName("created_at");
 

@@ -155,10 +155,10 @@ namespace backend.Migrations
                         .HasColumnType("real")
                         .HasColumnName("fats");
 
-                    b.Property<string>("Images")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("images");
+                        .HasColumnName("image");
 
                     b.Property<float>("PrepTime")
                         .HasColumnType("real")

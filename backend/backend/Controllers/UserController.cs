@@ -7,86 +7,84 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace backend.Controllers
+namespace backend.Controllers;
+
+[Route($"{ApiConstants.BaseUrl}/user")]
+[ApiController]
+public class UserController : ControllerBase
 {
+    private readonly ApplicationDBContext _context;
 
-    [Route($"{ApiConstants.BaseUrl}/user")]
-    [ApiController]
-    public class UserController : ControllerBase
+    public UserController(ApplicationDBContext context)
     {
-        private readonly ApplicationDBContext _context;
+        _context = context;
+    }
 
-        public UserController(ApplicationDBContext context)
+    [HttpGet("{id}")]
+    [Authorize]
+    public async Task<IActionResult> Retrieve([FromRoute] int id)
+    {
+        var user = await _context.Users.FindAsync(id);
+        if (user == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        [HttpGet("{id}")]
-        [Authorize]
-        public async Task<IActionResult> Retrieve([FromRoute] int id)
+        return Ok(user.ToUserDto());
+    }
+
+    [HttpGet("{id}/recipes_list")]
+    [Authorize]
+    public async Task<ActionResult> GetUserRecipesList([FromRoute] int id)
+    {
+        var user = await _context.Users
+            .Include(r => r.Recipes)
+            .FirstOrDefaultAsync(r => r.Id == id);
+
+        if (user == null)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(user.ToUserDto());
-        }
-
-        [HttpGet("{id}/recipes_list")]
-        [Authorize]
-        public async Task<ActionResult> GetUserRecipesList([FromRoute] int id)
-        {
-            var user = await _context.Users
-                .Include(r => r.Recipes)
-                .FirstOrDefaultAsync(r => r.Id == id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-
-            return Ok(user.Recipes.ToList());
-        }
-
-        [HttpPut("{id}")]
-        [Authorize]
-        public async Task<IActionResult> Update([FromRoute] int id, [FromForm] UserQuery userDto)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-
-            user.Username = userDto.Username;
-            user.Avatar = userDto.Avatar;
-            user.FirstName = userDto.FirstName;
-            user.LastName = userDto.LastName;
-
-            await _context.SaveChangesAsync();
-
-            return Ok(user.ToUserDto());
+            return NotFound();
         }
 
 
-        [HttpDelete("{id}")]
-        [Authorize]
-        public async Task<IActionResult> Delete([FromRoute] int id)
+        return Ok(user.Recipes.ToList());
+    }
+
+    [HttpPut("{id}")]
+    [Authorize]
+    public async Task<IActionResult> Update([FromRoute] int id, [FromForm] UserQuery userDto)
+    {
+        var user = await _context.Users.FindAsync(id);
+        if (user == null)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            return NotFound();
         }
+
+
+        user.Username = userDto.Username;
+        user.Avatar = userDto.Avatar;
+        user.FirstName = userDto.FirstName;
+        user.LastName = userDto.LastName;
+
+        await _context.SaveChangesAsync();
+
+        return Ok(user.ToUserDto());
+    }
+
+
+    [HttpDelete("{id}")]
+    [Authorize]
+    public async Task<IActionResult> Delete([FromRoute] int id)
+    {
+        var user = await _context.Users.FindAsync(id);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        _context.Users.Remove(user);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
     }
 }

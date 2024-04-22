@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using backend.Constants;
+using backend.Converters;
 using Microsoft.EntityFrameworkCore;
 
 namespace backend.Models;
@@ -21,8 +23,9 @@ public class Recipe
     [Column("id")]
     public int Id { get; set; }
 
-    [Column("images")]
-    public string[] Images { get; set; } // Предполагается, что это массив байтов для хранения изображений
+    [Column("image")]
+    // [JsonConverter(typeof(Base64JsonConverter))]
+    public string Image { get; set; } // Предполагается, что это массив байтов для хранения изображений
 
     [Required]
     [Column("title")]

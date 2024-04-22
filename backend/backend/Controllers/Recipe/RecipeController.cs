@@ -1,3 +1,4 @@
+using backend.Constants;
 using backend.Data;
 using backend.Mappers;
 using Microsoft.AspNetCore.Authorization;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace backend.Controllers.Recipe;
 
 [ApiController]
-[Route("api/recipes")]
+[Route($"{ApiConstants.BaseUrl}/recipes")]
 public class RecipesController : ControllerBase
 {
     private readonly ApplicationDBContext _context;
@@ -81,6 +82,23 @@ public class RecipesController : ControllerBase
 
         return Ok(recipe.RecipeNotes.ToList());
     }
+
+    [HttpGet]
+    [Authorize]
+    public async Task<IActionResult> List([FromQuery] bool byRating)
+    {
+        IQueryable<Models.Recipe> query = _context.Recipes.AsQueryable();
+
+        if (byRating)
+        {
+            query = query.Include(r => r.Comments);
+            query = query.OrderByDescending(r => r.Comments.Count);
+        }
+
+        var recipes = await query.ToListAsync();
+
+        return Ok(recipes.ToArray());
+    }
     
     [HttpGet("{id}")]
     [Authorize]
@@ -116,7 +134,7 @@ public class RecipesController : ControllerBase
             return NotFound();
         }
 
-        recipe.Images = recipeDto.Images;
+        recipe.Image = recipeDto.Image;
         recipe.Title = recipeDto.Title;
         recipe.Description = recipeDto.Description;
         recipe.PrepTime = recipeDto.PrepTime;
@@ -129,7 +147,7 @@ public class RecipesController : ControllerBase
         recipe.CuisineId = recipeDto.CuisineId;
         await _context.SaveChangesAsync();
 
-        return Ok(recipe);
+        return Ok(recipe.ToRecipeDto());
     }
     
     [HttpDelete("{id}")]

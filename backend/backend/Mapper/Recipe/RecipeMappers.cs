@@ -10,7 +10,7 @@ public static class RecipeMappers
         return new RecipeDto
         {
             Id = recipeModel.Id,
-            Images = recipeModel.Images,
+            Image = recipeModel.Image,
             Title = recipeModel.Title,
             Description = recipeModel.Description,
             PrepTime = recipeModel.PrepTime,
@@ -23,7 +23,6 @@ public static class RecipeMappers
             CreatedAt = recipeModel.CreatedAt,
             UserId = recipeModel.UserId,
             CuisineId = recipeModel.CuisineId,
-            TotalComments = recipeModel.Comments.Count
         };
     }
 
@@ -31,7 +30,7 @@ public static class RecipeMappers
     {
         return new Recipe
         {
-            Images = recipeQuery.Images,
+            Image = recipeQuery.Image,
             Title = recipeQuery.Title,
             Description = recipeQuery.Description,
             PrepTime = recipeQuery.PrepTime,

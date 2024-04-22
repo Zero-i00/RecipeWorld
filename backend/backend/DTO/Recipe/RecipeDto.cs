@@ -4,7 +4,7 @@ namespace backend.DTO.Recipe;
 public class RecipeDto
 {
     public int Id { get; set; }
-    public string[] Images { get; set; }
+    public string Image { get; set; }
     public string Title { get; set; }
     public string Description { get; set; }
     public float PrepTime { get; set; }
@@ -17,5 +17,4 @@ public class RecipeDto
     public DateTime CreatedAt { get; set; } = DateTime.Now;
     public int UserId { get; set; }
     public int? CuisineId { get; set; }
-    public int TotalComments { get; set; }
 }

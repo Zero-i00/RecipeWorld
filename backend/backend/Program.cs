@@ -47,6 +47,18 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
                          throw new InvalidOperationException("Connection String is not found"));
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder =>
+        {
+            builder.WithOrigins("http://localhost:3000") // Разрешаем запросы только с вашего домена
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+        });
+});
+
 builder.Services.AddSingleton<AuthService>();
 
 builder.Services.AddAuthentication(options =>
@@ -79,7 +91,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-
+app.UseCors("AllowSpecificOrigin");
 app.UseHttpsRedirection();
 
 app.UseAuthentication();

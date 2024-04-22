@@ -1,6 +1,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using backend.Constants;
+using backend.Converters;
 
 namespace backend.Models;
 
@@ -24,6 +26,7 @@ public class User
     public string Password { get; set; }
 
     [Column("avatar")]
+    [JsonConverter(typeof(Base64JsonConverter))]
     public string[]? Avatar { get; set; }
 
     [Required]
