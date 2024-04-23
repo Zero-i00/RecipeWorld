@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-import RecipeCard from '@/components/elements/recipe-card/RecipeCard'
+import RecipesContainer from '@/components/elements/RecipesContainer'
 import Loader from '@/components/ui/Loader'
 import Button from '@/components/ui/buttons/Button'
 import Heading from '@/components/ui/typeography/Heading'
@@ -36,14 +36,7 @@ export default function SelectionSection() {
 			<div className={`w-1/4`}>
 				<Heading title={`Beast Recipe`} />
 			</div>
-			<div className={styles['card-wrapper']}>
-				{data.data.slice(0, 6).map(recipe => (
-					<RecipeCard
-						key={`recipe-item-${recipe.id}`}
-						item={recipe}
-					/>
-				))}
-			</div>
+			<RecipesContainer item={data.data.slice(0, 6)} />
 			<div className={`flex justify-center py-12`}>
 				<Button
 					className={`mx-auto`}

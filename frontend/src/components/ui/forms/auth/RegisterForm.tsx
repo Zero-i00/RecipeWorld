@@ -1,6 +1,5 @@
 import { authService } from '@/services/auth.service'
 import { useMutation } from '@tanstack/react-query'
-import { useRouter } from 'next/navigation'
 import React, { Dispatch, PropsWithChildren, SetStateAction } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -31,9 +30,7 @@ export default function RegisterForm({
 		mode: 'onChange'
 	})
 
-	const { push } = useRouter()
-
-	const { mutate } = useMutation({
+	const { mutate, isPending } = useMutation({
 		mutationKey: ['register'],
 		mutationFn: (data: IRegisterForm) => authService.register(data),
 		onSuccess() {
@@ -96,6 +93,7 @@ export default function RegisterForm({
 				{children}
 				<div className={styles['form-footer']}>
 					<Button
+						isLoading={isPending}
 						type='submit'
 						onClick={handleSubmit(onSubmit)}
 					>

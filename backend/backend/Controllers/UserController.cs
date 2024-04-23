@@ -80,17 +80,11 @@ public class UserController : ControllerBase
     [Authorize]
     public async Task<ActionResult> GetUserRecipesList([FromRoute] int id)
     {
-        var user = await _context.Users
-            .Include(r => r.Recipes)
-            .FirstOrDefaultAsync(r => r.Id == id);
 
-        if (user == null)
-        {
-            return NotFound();
-        }
+        var recipes = await _context.Recipes.ToListAsync();
+        var response = recipes.Where(recipe => recipe.UserId == id); 
 
-
-        return Ok(user.Recipes.ToList());
+        return Ok(response);
     }
 
     [HttpPut("{id}")]

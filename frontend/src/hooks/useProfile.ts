@@ -1,11 +1,11 @@
-import {useQuery} from "@tanstack/react-query";
-import {userService} from "@/services/user.service";
+import { userService } from '@/services/user.service'
+import { useQuery } from '@tanstack/react-query'
 
 export function useProfile() {
-    const {data, isLoading} = useQuery({
-        queryKey: ['user'],
-        queryFn: () => userService.getUser()
-    })
+	const { data, isLoading, refetch } = useQuery({
+		queryKey: ['user'],
+		queryFn: () => userService.getUser()
+	})
 
-    return {data, isLoading}
+	return { data, isLoading, refetch }
 }

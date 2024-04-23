@@ -28,7 +28,7 @@ export default function LoginForm({ children }: PropsWithChildren) {
 	})
 
 	const { push } = useRouter()
-	const { mutate } = useMutation({
+	const { mutate, isPending } = useMutation({
 		mutationKey: ['auth'],
 		mutationFn: (data: ILoginFrom) => authService.login(data),
 		onSuccess() {
@@ -73,6 +73,7 @@ export default function LoginForm({ children }: PropsWithChildren) {
 				<div className={styles['form-footer']}>
 					<button></button>
 					<Button
+						isLoading={isPending}
 						type='submit'
 						onClick={handleSubmit(onSubmit)}
 					>

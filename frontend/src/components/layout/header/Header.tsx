@@ -53,23 +53,25 @@ const Header = () => {
 					</ul>
 				</nav>
 			)}
-			{isLoading ? (
-				<Loader />
-			) : data?.data?.username ? (
-				<button
-					onClick={() => push('/profile')}
-					className={styles.profile}
-				>
-					{data.data.username}
-				</button>
-			) : (
-				<Button
-					variant={`inline`}
-					onClick={() => push('/auth')}
-				>
-					Войти
-				</Button>
-			)}
+			<div className={`w-[200px]`}>
+				{isLoading ? (
+					<Loader />
+				) : data?.data?.username ? (
+					<button
+						onClick={() => push('/profile')}
+						className={styles.profile}
+					>
+						{data.data.username}
+					</button>
+				) : (
+					<Button
+						variant={`inline`}
+						onClick={() => push('/auth')}
+					>
+						Войти
+					</Button>
+				)}
+			</div>
 		</header>
 	)
 }

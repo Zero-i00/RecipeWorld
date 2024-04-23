@@ -10,7 +10,7 @@
 }
 
 .loading-page {
-  @apply w-full h-screen flex flex-1 justify-center items-center;
+  @apply w-full h-screen flex flex-col flex-1 justify-center items-center;
 }
 
 a {

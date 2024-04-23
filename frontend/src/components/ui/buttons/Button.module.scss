@@ -6,5 +6,9 @@
 }
 
 .inline {
-  @apply flex justify-center items-center py-1.5 px-4 bg-white border-[1px] border-primary rounded-lg;
+  @apply duration-700 w-full flex justify-center items-center py-2 px-4 bg-white border-[1px] border-primary rounded-lg;
+
+  &:hover {
+    @apply duration-700 text-primary;
+  }
 }
