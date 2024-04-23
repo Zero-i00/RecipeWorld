@@ -1,0 +1,12 @@
+
+.container {
+  @apply w-full flex flex-row justify-between items-start;
+
+  > .heading {
+    @apply text-black text-2xl font-bold;
+
+    span {
+      @apply text-primary;
+    }
+  }
+}

@@ -33,7 +33,7 @@ public class IngredientController : ControllerBase
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Create([FromForm] IngredientQuery ingredientDto)
+    public async Task<IActionResult> Create([FromBody] IngredientQuery ingredientDto)
     {
         var ingredientModel = ingredientDto.ToIngredientFromCreateDto();
         _context.Ingredients.Add(ingredientModel);
@@ -44,7 +44,7 @@ public class IngredientController : ControllerBase
     
     [HttpPut("{id}")]
     [Authorize]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromForm] IngredientQuery ingredientDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] IngredientQuery ingredientDto)
     {
         var ingredient = await _context.Ingredients.FindAsync(id);
         if (ingredient == null)

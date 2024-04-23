@@ -12,7 +12,7 @@ using backend.Data;
 namespace backend.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20240421104157_init")]
+    [Migration("20240422204731_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -158,10 +158,10 @@ namespace backend.Migrations
                         .HasColumnType("real")
                         .HasColumnName("fats");
 
-                    b.Property<string>("Images")
+                    b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("images");
+                        .HasColumnName("image");
 
                     b.Property<float>("PrepTime")
                         .HasColumnType("real")

@@ -1,0 +1,21 @@
+
+.header {
+  @apply flex flex-row justify-between items-center;
+  padding: 2rem 8rem;
+
+  > h1 {
+    @apply text-lg text-primary;
+
+    > span {
+      @apply text-black;
+    }
+  }
+
+  .profile {
+    @apply text-sm text-black cursor-pointer;
+
+    &:hover {
+      @apply underline underline-offset-4 decoration-primary;
+    }
+  }
+}

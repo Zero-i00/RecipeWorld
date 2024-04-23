@@ -7,8 +7,8 @@ import { axiosWithAuth } from '@/api/interceptors'
 class UserService {
 	private BASE_URL = '/user'
 
-	async getUserById(id: number) {
-		return await axiosWithAuth.get<IUser>(`${this.BASE_URL}/${id}`)
+	async getUser() {
+		return await axiosWithAuth.get<IUser>(`${this.BASE_URL}`)
 	}
 
 	async getUserRecipesList(id: number) {

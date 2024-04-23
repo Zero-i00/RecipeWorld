@@ -1,8 +1,10 @@
+import Home from '@/app/Home'
+import { Metadata } from 'next'
 
-export default function Home() {
-  return (
-    <main>
-      <h1>hello</h1>
-    </main>
-  );
+export const metadata: Metadata = {
+	title: 'Auth'
+}
+
+export default function HomePage() {
+	return <Home />
 }

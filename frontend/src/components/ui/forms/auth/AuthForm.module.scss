@@ -2,13 +2,17 @@
 .container {
   background: rgb(239, 171, 104);
   background: linear-gradient(360deg, rgba(239, 171, 104, 0.7) 0%, rgba(255, 255, 255, 1) 100%);
-  @apply flex min-h-screen;
+  @apply flex min-h-screen overflow-hidden;
 
   > form {
     @apply bg-white w-1/3 m-auto shadow rounded-2xl p-layout;
 
     .form-footer {
-      @apply flex justify-center items-center w-full;
+      @apply flex justify-center items-center w-full my-4;
     }
   }
+}
+
+.change-form-btn {
+  @apply text-primary text-sm;
 }

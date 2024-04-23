@@ -6,6 +6,10 @@ using backend.Mapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace backend.Controllers;
 
@@ -14,24 +18,63 @@ namespace backend.Controllers;
 public class UserController : ControllerBase
 {
     private readonly ApplicationDBContext _context;
+    private readonly IConfiguration _configuration;
 
-    public UserController(ApplicationDBContext context)
+    public UserController(ApplicationDBContext context, IConfiguration configuration)
     {
         _context = context;
+        _configuration = configuration;
     }
 
-    [HttpGet("{id}")]
-    [Authorize]
-    public async Task<IActionResult> Retrieve([FromRoute] int id)
+    [HttpGet]
+    public IActionResult GetUserByToken()
     {
-        var user = await _context.Users.FindAsync(id);
-        if (user == null)
+        try
         {
-            return NotFound();
-        }
+            // Получаем токен из заголовка Authorization
+            var authHeader = Request.Headers["Authorization"].ToString();
+            var token = authHeader.Replace("Bearer ", string.Empty);
 
-        return Ok(user.ToUserDto());
+            // Получаем ключ и другие параметры из конфигурации
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var tokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = key,
+                ValidateIssuer = true,
+                ValidIssuer = _configuration["Jwt:Issuer"],
+                ValidateAudience = true,
+                ValidAudience = _configuration["Jwt:Audience"],
+                ValidateLifetime = true, // Вам может потребоваться валидация времени жизни токена
+                ClockSkew = TimeSpan.Zero
+            };
+
+            // Декодируем токен
+            var handler = new JwtSecurityTokenHandler();
+            var principal = handler.ValidateToken(token, tokenValidationParameters, out var validatedToken);
+
+            // Получаем имя пользователя из токена
+            var username = principal.Claims.First(c => c.Type == ClaimTypes.Name).Value;
+
+            // Получаем пользователя из базы данных
+            var user = _context.Users.SingleOrDefault(u => u.Username == username);
+
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
+
+            // Возвращаем пользователя
+            return Ok(user.ToUserDto());
+        }
+        catch (Exception ex)
+        {
+            // Обработка ошибок
+            return BadRequest("Invalid token.");
+        }
     }
+
+
 
     [HttpGet("{id}/recipes_list")]
     [Authorize]
@@ -52,7 +95,7 @@ public class UserController : ControllerBase
 
     [HttpPut("{id}")]
     [Authorize]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromForm] UserQuery userDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UserQuery userDto)
     {
         var user = await _context.Users.FindAsync(id);
         if (user == null)

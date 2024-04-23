@@ -1,0 +1,173 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\ingredientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\ingredientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\cuisinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\cuisinecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\commentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\recipe\\recipestepcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\recipe\\recipestepcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\recipe\\recipenotecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\recipe\\recipenotecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\controllers\\recipe\\recipecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\controllers\\recipe\\recipecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|c:\\users\\mrshe\\vsprojects\\recipeworld\\backend\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{54D88BF7-A420-440D-8924-DBFBF9A6A1E5}|backend\\backend.csproj|solutionrelative:backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IngredientController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\IngredientController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\IngredientController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\IngredientController.cs",
+              "RelativeToolTip": "backend\\Controllers\\IngredientController.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAIwE8AAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T21:59:25.76Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CuisineController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\CuisineController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\CuisineController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\CuisineController.cs",
+              "RelativeToolTip": "backend\\Controllers\\CuisineController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T21:59:21.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CommentController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\CommentController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\CommentController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\CommentController.cs",
+              "RelativeToolTip": "backend\\Controllers\\CommentController.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAIwE0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T21:59:14.765Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RecipeStepController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\Recipe\\RecipeStepController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\Recipe\\RecipeStepController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\Recipe\\RecipeStepController.cs",
+              "RelativeToolTip": "backend\\Controllers\\Recipe\\RecipeStepController.cs",
+              "ViewState": "AQIAAC8AAAAAAAAAAAAIwE0AAAAbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T21:59:04.432Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RecipeNoteController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\Recipe\\RecipeNoteController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\Recipe\\RecipeNoteController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\Recipe\\RecipeNoteController.cs",
+              "RelativeToolTip": "backend\\Controllers\\Recipe\\RecipeNoteController.cs",
+              "ViewState": "AQIAADgAAAAAAAAAAAAIwC8AAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T21:58:54.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RecipeController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\Recipe\\RecipeController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\Recipe\\RecipeController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\Recipe\\RecipeController.cs",
+              "RelativeToolTip": "backend\\Controllers\\Recipe\\RecipeController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAHUAAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T20:47:27.004Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\UserController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\UserController.cs",
+              "RelativeToolTip": "backend\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAswGEAAABJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T20:47:20.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\appsettings.json",
+              "RelativeDocumentMoniker": "backend\\appsettings.json",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\appsettings.json",
+              "RelativeToolTip": "backend\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-04-22T20:44:34.2Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "backend\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\mrshe\\VsProjects\\RecipeWorld\\backend\\backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "backend\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAowBoAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-17T06:11:49.855Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

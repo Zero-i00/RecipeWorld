@@ -1,7 +1,7 @@
 import { authService } from '@/services/auth.service'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
@@ -17,7 +17,7 @@ import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 
 import styles from './AuthForm.module.scss'
 
-export default function LoginForm() {
+export default function LoginForm({ children }: PropsWithChildren) {
 	const {
 		register,
 		handleSubmit,
@@ -69,7 +69,7 @@ export default function LoginForm() {
 					error={errors.password}
 					placeholder={'Пароль'}
 				/>
-
+				{children}
 				<div className={styles['form-footer']}>
 					<button></button>
 					<Button

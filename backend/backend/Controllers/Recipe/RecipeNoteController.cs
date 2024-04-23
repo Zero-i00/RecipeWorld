@@ -34,7 +34,7 @@ public class RecipeNoteController : ControllerBase
 
     [HttpPost]
     [Authorize]
-    public async Task<IActionResult> Create([FromForm] RecipeNoteQuery noteDto)
+    public async Task<IActionResult> Create([FromBody] RecipeNoteQuery noteDto)
     {
         var noteModel = noteDto.ToRecipeNoteFromCreateDto();
         _context.RecipeNotes.Add(noteModel);
@@ -45,7 +45,7 @@ public class RecipeNoteController : ControllerBase
 
     [HttpPut("{id}")]
     [Authorize]
-    public async Task<IActionResult> Update([FromRoute] int id, [FromForm] RecipeNoteQuery noteDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] RecipeNoteQuery noteDto)
     {
         var note = await _context.RecipeNotes.FindAsync(id);
         if (note == null)
