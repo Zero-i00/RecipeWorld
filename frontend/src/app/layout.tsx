@@ -28,7 +28,7 @@ export default function RootLayout({
 					<Toaster
 						theme={`light`}
 						position={`bottom-right`}
-						duration={1500}
+						duration={3000}
 					/>
 				</Providers>
 			</body>

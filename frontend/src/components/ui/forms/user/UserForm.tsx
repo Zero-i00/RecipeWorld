@@ -109,7 +109,7 @@ export default function UserForm() {
 							className={styles.reset}
 							onClick={() => setIsEdit(false)}
 						>
-							Отмена
+							Cansel
 						</button>
 					)}
 				</div>

@@ -1,3 +1,5 @@
+'use client'
+
 import cn from 'clsx'
 import React, { HTMLAttributes, PropsWithChildren } from 'react'
 
@@ -13,7 +15,10 @@ export default function Layout({
 	...rest
 }: PropsWithChildren<TypeLayoutProps>) {
 	return (
-		<div className={cn(styles.wrapper, className)}>
+		<div
+			{...rest}
+			className={cn(styles.wrapper, className)}
+		>
 			<Header />
 			<main className={styles.main}>{children}</main>
 		</div>

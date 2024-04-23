@@ -76,18 +76,9 @@ public class RecipesController : ControllerBase
 
     [HttpGet]
     [Authorize]
-    public async Task<IActionResult> List([FromQuery] bool byRating)
+    public async Task<IActionResult> List()
     {
-        IQueryable<Models.Recipe> query = _context.Recipes.AsQueryable();
-
-        if (byRating)
-        {
-            query = query.Include(r => r.Comments);
-            query = query.OrderByDescending(r => r.Comments.Count);
-        }
-
-        var recipes = await query.ToListAsync();
-
+        var recipes = await _context.Recipes.ToListAsync();
         return Ok(recipes);
     }
     

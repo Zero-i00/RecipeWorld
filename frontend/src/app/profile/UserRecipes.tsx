@@ -35,7 +35,7 @@ export default function UserRecipes({ userId }: IUserRecipeProps) {
 					alt='empty'
 				/>
 				<h1 className={`text-center text-2xl text-black font-bold`}>
-					Не удалось найти ваши рецепты
+					Recipes not found
 				</h1>
 			</div>
 		)
@@ -51,7 +51,7 @@ export default function UserRecipes({ userId }: IUserRecipeProps) {
 					alt='empty'
 				/>
 				<h1 className={`text-center text-2xl text-black font-bold`}>
-					У вас пока нет рецептов
+					You dont have any recipe yet
 				</h1>
 			</div>
 		)
@@ -60,7 +60,7 @@ export default function UserRecipes({ userId }: IUserRecipeProps) {
 	return (
 		<div>
 			<div className={`w-1/4`}>
-				<h1 className={`text-xl text-black font-bold my-12`}>Мои рецепты</h1>
+				<h1 className={`text-xl text-black font-bold my-12`}>My Recipes</h1>
 			</div>
 			<RecipesContainer item={data.data} />
 		</div>

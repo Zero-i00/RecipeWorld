@@ -1,0 +1,28 @@
+
+.create-recipe-form {
+  @apply w-full h-screen flex flex-col gap-8;
+
+  .form-header {
+    @apply w-full py-4 flex flex-row justify-between items-center border-b-[1px] border-b-gray/50;
+
+    h1 {
+      @apply text-xl text-black font-bold;
+    }
+  }
+
+  .content {
+    @apply w-2/3 flex flex-col mx-auto;
+
+    .field {
+      @apply flex flex-col gap-4;
+
+      img {
+        @apply rounded-lg my-2;
+      }
+
+      .field-title {
+        @apply text-base text-black font-medium my-1;
+      }
+    }
+  }
+}

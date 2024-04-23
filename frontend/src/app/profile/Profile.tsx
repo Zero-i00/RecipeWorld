@@ -12,6 +12,8 @@ import Loader from '@/components/ui/Loader'
 import Button from '@/components/ui/buttons/Button'
 import UserForm from '@/components/ui/forms/user/UserForm'
 
+import { DASHBOARD_PAGES } from '@/config/pages-url.config'
+
 import { useProfile } from '@/hooks/useProfile'
 
 export default function Profile() {
@@ -45,7 +47,7 @@ export default function Profile() {
 					alt='empty'
 				/>
 				<h1 className={`text-center text-2xl text-black font-bold`}>
-					Не удалось найти ваш профиль
+					Profile not found
 				</h1>
 			</div>
 		)
@@ -54,13 +56,19 @@ export default function Profile() {
 	return (
 		<Layout>
 			<UserForm />
-			<div className={'w-[400px] my-4'}>
+			<div className={'w-[400px] my-4 flex flex-col gap-4'}>
+				<Button
+					variant={`inline`}
+					onClick={() => push(DASHBOARD_PAGES.CREATE_RECIPE)}
+				>
+					Create Recipe
+				</Button>
 				<Button
 					onClick={() => mutate()}
 					isLoading={isPending}
 					variant={`inline`}
 				>
-					Выйти
+					Logout
 				</Button>
 			</div>
 			<UserRecipes userId={data.data.id} />

@@ -1,10 +1,13 @@
 import cn from 'clsx'
 import { Timer as TimerIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 import React from 'react'
 
 import { IDivElement } from '@/components/elements/element.types'
 
 import { IRecipe } from '@/types/recipe/recipe.types'
+
+import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 
 import styles from './RecipeCard.module.scss'
 
@@ -13,9 +16,12 @@ export default function RecipeCard({
 	className,
 	...rest
 }: IDivElement<IRecipe>) {
+	const { push } = useRouter()
+
 	return (
 		<div
 			{...rest}
+			onClick={() => push(`${DASHBOARD_PAGES.RECIPES}/${item.id}`)}
 			className={cn(styles.card)}
 		>
 			<img
