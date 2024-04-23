@@ -1,6 +1,6 @@
 
 .card {
-  @apply cursor-pointer duration-700 shadow rounded-xl bg-white my-4;
+  @apply z-20 cursor-pointer duration-700 shadow rounded-xl bg-white my-4;
   width: 425px;
   height: 400px;
 

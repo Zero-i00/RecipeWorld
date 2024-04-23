@@ -141,6 +141,41 @@ export default function CreateRecipeForm({ userId }: ICreateRecipeFormProps) {
 						/>
 					</div>
 				</div>
+				<div className={styles.field}>
+					<h1 className={styles['field-title']}>Proteins:</h1>
+					<Field
+						{...register('proteins', {
+							required: 'This field is required'
+						})}
+						isNumber
+						placeholder={`Proteins`}
+						error={errors.proteins}
+					/>
+				</div>
+				<div className={`flex flex-row justify-between items-center`}>
+					<div className={styles.field}>
+						<h1 className={styles['field-title']}>Carbs:</h1>
+						<Field
+							{...register('carbs', {
+								required: 'This field is required'
+							})}
+							isNumber
+							placeholder={`Carbs`}
+							error={errors.prepTime}
+						/>
+					</div>
+					<div className={styles.field}>
+						<h1 className={styles['field-title']}>Fats:</h1>
+						<Field
+							{...register('fats', {
+								required: 'This field is required'
+							})}
+							isNumber
+							placeholder={`Fats`}
+							error={errors.fats}
+						/>
+					</div>
+				</div>
 			</div>
 		</form>
 	)
