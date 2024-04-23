@@ -1,21 +1,46 @@
 
 .header {
   @apply flex flex-row justify-between items-center;
-  padding: 2rem 8rem;
+  padding: 2rem 12rem;
 
-  > h1 {
-    @apply text-lg text-primary;
+  .logo {
+    @apply w-1/3;
 
-    > span {
-      @apply text-black;
+    a {
+      @apply w-fit flex flex-row items-center gap-4;
+
+      h1 {
+        @apply text-lg text-primary;
+
+        > span {
+          @apply text-black;
+        }
+      }
+    }
+  }
+
+
+  nav {
+    @apply w-1/3;
+  }
+
+  nav ul {
+    @apply flex flex-row justify-center items-center gap-12;
+
+    li {
+      @apply duration-300 text-sm text-black;
+
+      &:hover {
+        @apply duration-300 text-primary underline underline-offset-4 decoration-primary;
+      }
     }
   }
 
   .profile {
-    @apply text-sm text-black cursor-pointer;
+    @apply w-1/3 duration-300 text-sm text-black cursor-pointer flex justify-end;
 
     &:hover {
-      @apply underline underline-offset-4 decoration-primary;
+      @apply text-primary duration-300 underline underline-offset-4 decoration-primary;
     }
   }
 }

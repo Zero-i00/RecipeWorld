@@ -1,0 +1,26 @@
+
+.container {
+  @apply w-full py-16 flex flex-row justify-between items-center;
+
+  img {
+    @apply rounded-lg;
+    width: 450px;
+    height: 450px;
+  }
+
+  .content {
+    @apply text-center flex flex-col justify-center items-center gap-8;
+
+    .title {
+      @apply text-black text-6xl font-bold;
+
+      span {
+        @apply text-primary;
+      }
+    }
+
+    .description {
+      @apply text-sm text-gray;
+    }
+  }
+}

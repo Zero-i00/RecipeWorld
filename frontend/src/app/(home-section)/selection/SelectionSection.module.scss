@@ -1,0 +1,8 @@
+
+.container {
+  @apply w-full h-screen;
+
+  .card-wrapper {
+    @apply flex flex-row flex-wrap justify-between items-center;
+  }
+}

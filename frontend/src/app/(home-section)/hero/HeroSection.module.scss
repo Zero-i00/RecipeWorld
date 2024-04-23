@@ -1,12 +1,24 @@
 
 .container {
-  @apply w-full flex flex-row justify-between items-start;
+  @apply w-full py-16 flex flex-row justify-between items-center;
 
   > .heading {
-    @apply text-black text-2xl font-bold;
+    @apply w-1/2 flex flex-col gap-12;
 
-    span {
-      @apply text-primary;
+    h1 {
+      @apply text-black text-7xl font-bold;
+
+      span {
+        @apply text-primary;
+      }
     }
+
+    .description {
+      @apply w-2/3 text-sm text-gray;
+    }
+  }
+
+  > .reviews {
+    @apply w-1/2;
   }
 }
