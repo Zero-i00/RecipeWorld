@@ -8,3 +8,8 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+
+.loading-page {
+  @apply w-full h-screen flex justify-center items-center;
+}

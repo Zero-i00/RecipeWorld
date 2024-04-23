@@ -17,7 +17,7 @@ class RecipeService {
 	async getRecipesList(query: IRecipeListQuery) {
 		const queryString =
 			query.byRating !== undefined ? `?byRating=${query.byRating}` : ''
-		return await axiosWithAuth.get<IRecipe[]>(`${this.BASE_URL}${queryString}`)
+		return await axiosWithAuth.get<IRecipe[]>(`${this.BASE_URL}`)
 	}
 
 	async getRecipeCommentsList(id: number) {

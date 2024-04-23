@@ -85,7 +85,7 @@ public class RecipesController : ControllerBase
 
     [HttpGet]
     [Authorize]
-    public async Task<IActionResult> List([FromQuery] bool byRating)
+    public async Task<IActionResult> List([FromQuery] bool byRating = false)
     {
         IQueryable<Models.Recipe> query = _context.Recipes.AsQueryable();
 

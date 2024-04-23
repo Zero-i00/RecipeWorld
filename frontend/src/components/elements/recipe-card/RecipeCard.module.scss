@@ -1,0 +1,36 @@
+
+.card {
+  @apply duration-500 max-w-[400px] h-[350px] flex flex-col flex-1 border-[1px] border-gray rounded-xl cursor-pointer;
+
+  &:hover {
+    @apply duration-500 scale-105;
+  }
+
+  .img-container {
+    @apply w-full h-1/2;
+
+    img {
+      @apply flex-1;
+    }
+  }
+
+  .body {
+    @apply flex flex-col p-4 gap-2;
+
+    .title {
+      @apply text-base text-black font-medium;
+    }
+
+    .description {
+      @apply text-sm text-gray;
+    }
+
+    .cook-time-container {
+      @apply w-fit flex flex-row justify-end items-center border-[1px] border-gray rounded-lg py-1 px-2;
+
+      h2 {
+        @apply text-sm text-black mx-2;
+      }
+    }
+  }
+}

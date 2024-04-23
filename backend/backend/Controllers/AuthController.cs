@@ -42,7 +42,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromForm] LoginQuery loginQuery)
+    public async Task<IActionResult> Login([FromBody] LoginQuery loginQuery)
     {
         var userDto = loginQuery.ToUserFromLoginDto();
         var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == userDto.Username);
