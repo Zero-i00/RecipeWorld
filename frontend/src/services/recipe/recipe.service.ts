@@ -40,7 +40,7 @@ class RecipeService {
 
 	async getRecipeStepsList(id: number) {
 		return await axiosWithAuth.get<IRecipeStep[]>(
-			`${this.BASE_URL}/${id}/recipe_steps`
+			`${this.BASE_URL}/${id}/instruction_steps`
 		)
 	}
 

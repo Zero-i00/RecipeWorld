@@ -1,0 +1,16 @@
+
+.container {
+  @apply w-fit flex flex-col my-8;
+
+  .heading {
+    @apply text-lg text-black font-bold;
+  }
+
+  .ingredient-item {
+    @apply flex flex-row justify-start items-center gap-4 my-2;
+
+    .ingredient-item-value {
+      @apply text-sm text-black;
+    }
+  }
+}

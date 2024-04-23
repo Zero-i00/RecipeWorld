@@ -3,7 +3,9 @@
 import UserRecipes from '@/app/profile/UserRecipes'
 import { authService } from '@/services/auth.service'
 import { useMutation } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import React from 'react'
+import { toast } from 'sonner'
 
 import Layout from '@/components/layout/Layout'
 import Loader from '@/components/ui/Loader'
@@ -14,9 +16,15 @@ import { useProfile } from '@/hooks/useProfile'
 
 export default function Profile() {
 	const { data, isLoading } = useProfile()
+	const { push } = useRouter()
+
 	const { mutate, isPending } = useMutation({
-		mutationKey: ['logout'],
-		mutationFn: () => authService.logout()
+		mutationKey: ['profile', 'logout'],
+		mutationFn: () => authService.logout(),
+		onSuccess() {
+			toast.success('Вы успешно вышли из системы')
+			push('/')
+		}
 	})
 
 	if (isLoading) {

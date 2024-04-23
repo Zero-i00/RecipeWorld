@@ -1,0 +1,25 @@
+
+.container {
+  @apply mx-auto w-2/3 flex flex-row justify-center items-center my-8;
+
+
+  .item {
+    @apply px-12 flex flex-col justify-center items-center;
+
+    &:first-child {
+      @apply border-r-2 border-r-gray/50;
+    }
+
+    &:last-child {
+      @apply border-l-2 border-l-gray/50;
+    }
+
+    h1 {
+      @apply text-gray text-base;
+    }
+
+    p {
+      @apply text-black text-sm font-medium;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+
+.active {
+  @apply w-6 h-6 bg-primary border-[1px] border-primary rounded-md flex justify-center items-center outline-0 font-medium;
+}
+
+.disable {
+  @apply w-6 h-6 bg-white border-[1px] border-primary rounded-md outline-0;
+}

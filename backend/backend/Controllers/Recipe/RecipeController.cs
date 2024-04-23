@@ -22,65 +22,56 @@ public class RecipesController : ControllerBase
     [Authorize]
     public async Task<ActionResult> GetRecipeIngredients([FromRoute] int id)
     {
-        var recipe = await _context.Recipes
-            .Include(r => r.Ingredients)
-            .FirstOrDefaultAsync(r => r.Id == id);
-
-        if (recipe == null)
-        {
-            return NotFound();
-        }
+        var ingredients = await _context.Ingredients.ToListAsync();
+        var response = ingredients.Where(ingredient => ingredient.RecipeId == id);  
 
 
-        return Ok(recipe.Ingredients.ToList());
+        return Ok(response);
     }
     
     [HttpGet("{id}/comments")]
     [Authorize]
     public async Task<ActionResult> GetRecipeComments([FromRoute] int id)
     {
-        var recipe = await _context.Recipes
-            .Include(r => r.Comments)
-            .FirstOrDefaultAsync(r => r.Id == id);
+        var comments = await _context.Comments
+            .Include(c => c.User) // ѕредполагаетс€, что у вас есть навигационное свойство User в модели Comment
+            .Where(comment => comment.RecipeId == id)
+            .ToListAsync();
 
-        if (recipe == null)
+        // ≈сли вы хотите вернуть только определенные пол€ пользовател€, вы можете использовать Select
+        var response = comments.Select(comment => new
         {
-            return NotFound();
-        }
+            id = comment.Id,
+            title = comment.Title,
+            text = comment.Text,
+            created_at = comment.CreatedAt,
+            userId = comment.UserId,
+            userName = comment.User.FirstName + " " + comment.User.LastName,                          
+        });
 
-        return Ok(recipe.Comments.ToList());
+        return Ok(response);
     }
     
     [HttpGet("{id}/instruction_steps")]
     [Authorize]
     public async Task<ActionResult> GetRecipeInstructionSteps([FromRoute] int id)
     {
-        var recipe = await _context.Recipes
-            .Include(r => r.InstructionSteps)
-            .FirstOrDefaultAsync(r => r.Id == id);
+        var steps = await _context.RecipeInstructionSteps.ToListAsync();
+        var response = steps.Where(step => step.RecipeId == id);
 
-        if (recipe == null)
-        {
-            return NotFound();
-        }
 
-        return Ok(recipe.InstructionSteps.ToList());
+        return Ok(response);
     }
     
     [HttpGet("{id}/recipe_notes")]
     [Authorize]
     public async Task<ActionResult> GetRecipeNotes([FromRoute] int id)
     {
-        var recipe = await _context.Recipes
-            .Include(r => r.RecipeNotes)
-            .FirstOrDefaultAsync(r => r.Id == id);
+        var notes = await _context.RecipeNotes.ToListAsync();
+        var response = notes.Where(note => note.RecipeId == id);
 
-        if (recipe == null)
-        {
-            return NotFound();
-        }
 
-        return Ok(recipe.RecipeNotes.ToList());
+        return Ok(response);
     }
 
     [HttpGet]
@@ -97,7 +88,7 @@ public class RecipesController : ControllerBase
 
         var recipes = await query.ToListAsync();
 
-        return Ok(recipes.ToArray());
+        return Ok(recipes);
     }
     
     [HttpGet("{id}")]

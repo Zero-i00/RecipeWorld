@@ -37,6 +37,9 @@ export default function RegisterForm({
 			toast.success('Вы успешно зарегистрировались')
 			setIsLogin(true)
 			reset()
+		},
+		onError() {
+			toast.error('Не удалось создать аккаунт')
 		}
 	})
 
@@ -48,7 +51,7 @@ export default function RegisterForm({
 		<div className={styles.container}>
 			<form>
 				<div className={`my-8`}>
-					<Heading title={`Авторизация`} />
+					<Heading title={`Authorization`} />
 				</div>
 
 				<Field
@@ -56,7 +59,7 @@ export default function RegisterForm({
 						required: 'Поле является обязательным'
 					})}
 					error={errors.username}
-					placeholder={'Логин'}
+					placeholder={'Login'}
 				/>
 
 				<Field
@@ -69,7 +72,7 @@ export default function RegisterForm({
 					})}
 					type={`password`}
 					error={errors.password}
-					placeholder={'Пароль'}
+					placeholder={'Password'}
 				/>
 
 				<div className={`flex flex-row justify-between items-center`}>
@@ -79,7 +82,7 @@ export default function RegisterForm({
 							required: 'Поле является обязательным'
 						})}
 						error={errors.firstName}
-						placeholder={'Имя'}
+						placeholder={'First Name'}
 					/>
 					<Field
 						className={`w-1/2`}
@@ -87,7 +90,7 @@ export default function RegisterForm({
 							required: 'Поле является обязательным'
 						})}
 						error={errors.lastName}
-						placeholder={'Фамилия'}
+						placeholder={'Last Name'}
 					/>
 				</div>
 				{children}
@@ -97,7 +100,7 @@ export default function RegisterForm({
 						type='submit'
 						onClick={handleSubmit(onSubmit)}
 					>
-						Зарегистрироваться
+						Register
 					</Button>
 				</div>
 			</form>

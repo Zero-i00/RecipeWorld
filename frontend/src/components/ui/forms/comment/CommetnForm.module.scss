@@ -1,0 +1,9 @@
+
+.comment-form {
+  @apply w-full flex flex-col gap-4 my-8;
+
+  .title {
+    @apply text-black text-lg font-semibold;
+  }
+  
+}

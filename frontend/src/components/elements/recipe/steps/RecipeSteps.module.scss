@@ -1,0 +1,24 @@
+
+.container {
+  @apply w-fit flex flex-col my-8;
+
+  .heading {
+    @apply text-lg text-black font-bold;
+  }
+
+  .step-item {
+    @apply flex flex-row justify-start items-center gap-4 my-4;
+
+    .step-order {
+      @apply w-6 h-6 bg-primary border-[1px] border-primary rounded-md flex justify-center items-center outline-0;
+
+      p {
+        @apply text-white text-xs font-medium;
+      }
+    }
+
+    .step-item-value {
+      @apply text-sm text-black;
+    }
+  }
+}

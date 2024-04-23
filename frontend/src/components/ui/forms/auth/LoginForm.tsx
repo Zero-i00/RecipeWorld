@@ -35,6 +35,9 @@ export default function LoginForm({ children }: PropsWithChildren) {
 			toast.success('Вы успешно авторизировались')
 			reset()
 			push(DASHBOARD_PAGES.HOME)
+		},
+		onError() {
+			toast.error('Не удалось авторизироваться')
 		}
 	})
 
@@ -46,7 +49,7 @@ export default function LoginForm({ children }: PropsWithChildren) {
 		<div className={styles.container}>
 			<form>
 				<div className={`my-8`}>
-					<Heading title={`Авторизация`} />
+					<Heading title={`Authorization`} />
 				</div>
 
 				<Field
@@ -54,7 +57,7 @@ export default function LoginForm({ children }: PropsWithChildren) {
 						required: 'Поле является обязательным'
 					})}
 					error={errors.username}
-					placeholder={'Логин'}
+					placeholder={'Login'}
 				/>
 
 				<Field
@@ -67,7 +70,7 @@ export default function LoginForm({ children }: PropsWithChildren) {
 					})}
 					type={`password`}
 					error={errors.password}
-					placeholder={'Пароль'}
+					placeholder={'Password'}
 				/>
 				{children}
 				<div className={styles['form-footer']}>
@@ -77,7 +80,7 @@ export default function LoginForm({ children }: PropsWithChildren) {
 						type='submit'
 						onClick={handleSubmit(onSubmit)}
 					>
-						Войти
+						Login
 					</Button>
 				</div>
 			</form>

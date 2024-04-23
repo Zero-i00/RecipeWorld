@@ -46,14 +46,14 @@ export default function UserForm() {
 		mutationFn: (query: TypeUserFormState) =>
 			userService.updateUser(data.data.id, query),
 		onSuccess() {
-			toast('Данне пользовотеля успешно обновлены')
+			toast.success('Данне пользовотеля успешно обновлены')
 			refetch().then(response => {
 				setValue('firstName', response.data?.data.firstName)
 				setValue('lastName', response.data?.data.lastName)
 			})
 		},
 		onError() {
-			toast('Не удалось обновить данне пользовотеля')
+			toast.error('Не удалось обновить данне пользовотеля')
 		}
 	})
 
@@ -84,7 +84,7 @@ export default function UserForm() {
 					})}
 					className={`${!isEdit && 'opacity-55'}`}
 					disabled={!isEdit}
-					placeholder={`Имя`}
+					placeholder={`First Name`}
 					error={errors.firstName}
 				/>
 				<Field
@@ -93,7 +93,7 @@ export default function UserForm() {
 					})}
 					className={`${!isEdit && 'opacity-55'}`}
 					disabled={!isEdit}
-					placeholder={`Фамилия`}
+					placeholder={`Last Name`}
 					error={errors.lastName}
 				/>
 				<div className={styles['form-footer']}>
@@ -102,7 +102,7 @@ export default function UserForm() {
 						type={`button`}
 						onClick={isEdit ? handleSubmit(onSubmit) : () => setIsEdit(true)}
 					>
-						{isEdit ? 'Сохранить' : 'Редактировать'}
+						{isEdit ? 'Save' : 'Edit'}
 					</Button>
 					{isEdit && (
 						<button

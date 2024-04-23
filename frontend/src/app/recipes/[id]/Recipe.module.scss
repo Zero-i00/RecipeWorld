@@ -1,0 +1,33 @@
+
+.container {
+  @apply w-full h-screen flex-1 flex flex-col;
+
+  .title {
+    @apply text-2xl text-black font-bold;
+  }
+
+  .info {
+    @apply flex flex-row justify-start items-center gap-8 my-2;
+
+    .info-item {
+      @apply flex flex-row justify-center items-center gap-2;
+
+      h1 {
+        @apply text-gray text-sm;
+      }
+    }
+  }
+
+  .content {
+    @apply w-2/3;
+
+    img {
+      @apply my-4 rounded-lg;
+    }
+
+    .description {
+      @apply text-gray text-sm my-4;
+    }
+  }
+
+}

@@ -1,7 +1,7 @@
 .input {
   @apply block mb-6;
 
-  > input {
+  > input, textarea {
     @apply text-sm rounded-lg px-4 py-3 w-full block outline-0 bg-white border-[1px] border-gray;
     color: rgba(0, 0, 0, 0.80);;
     transition: box-shadow 0.4s ease;

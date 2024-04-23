@@ -1,0 +1,28 @@
+
+.container {
+  @apply w-fit flex flex-col my-8;
+
+  .heading {
+    @apply text-lg text-black font-bold mb-8;
+  }
+
+  .comment {
+    @apply border-t-[1px] border-t-gray/50 py-4 my-4;
+
+    .header {
+      @apply flex flex-col justify-start items-start gap-2;
+
+      .user {
+        @apply text-black text-sm font-semibold;
+      }
+
+      .data {
+        @apply text-gray text-xs;
+      }
+    }
+
+    .text {
+      @apply text-black/80 text-xs my-2;
+    }
+  }
+}
