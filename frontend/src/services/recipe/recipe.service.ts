@@ -5,7 +5,7 @@ import { IRecipeStep } from '@/types/recipe/recipe-step.types'
 import type { TypeRecipeFormState } from '@/types/recipe/recipe.types'
 import { IRecipe, IRecipeListQuery } from '@/types/recipe/recipe.types'
 
-import { axiosWithAuth } from '@/api/interceptors'
+import { axiosClassic, axiosWithAuth } from '@/api/interceptors'
 
 class RecipeService {
 	private BASE_URL = '/recipes'
@@ -21,6 +21,12 @@ class RecipeService {
 	async getRecipeCommentsList(id: number) {
 		return await axiosWithAuth.get<IComment[]>(
 			`${this.BASE_URL}/${id}/comments`
+		)
+	}
+
+	async search(query: string) {
+		return await axiosClassic.get<IRecipe[]>(
+			`${this.BASE_URL}/search?=${query}`
 		)
 	}
 
