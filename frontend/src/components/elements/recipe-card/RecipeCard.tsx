@@ -1,3 +1,5 @@
+'use client'
+
 import { recipeService } from '@/services/recipe/recipe.service'
 import { useMutation } from '@tanstack/react-query'
 import cn from 'clsx'

@@ -4,6 +4,7 @@ import SelectionSection from '@/app/(home-section)/selection/SelectionSection'
 import React from 'react'
 
 import Layout from '@/components/layout/Layout'
+import Search from '@/components/ui/search/Search'
 
 export default function Home() {
 	return (
@@ -14,6 +15,7 @@ export default function Home() {
 					alt='spot'
 				/>
 			</div>
+			<Search item={undefined} />
 			<HeroSection />
 			<AboutSection />
 			<SelectionSection />
