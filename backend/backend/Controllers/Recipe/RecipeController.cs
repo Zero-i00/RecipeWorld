@@ -81,6 +81,41 @@ public class RecipesController : ControllerBase
         return Ok(recipes);
     }
     
+    [HttpGet("search")]
+    public async Task<IActionResult> Search([FromQuery] string query)
+    {
+        if (string.IsNullOrEmpty(query))
+        {
+            return BadRequest("Пожалуйста, укажите запрос для поиска.");
+        }
+
+        // Поиск по названию рецепта
+        var recipesByTitle = await _context.Recipes
+            .Where(recipe => EF.Functions.Like(recipe.Title, $"%{query}%"))
+            .ToListAsync();
+
+        // Поиск по названию ингредиента
+        var ingredients = await _context.Ingredients
+            .Where(ingredient => EF.Functions.Like(ingredient.Title, $"%{query}%"))
+            .ToListAsync();
+
+        // Получение идентификаторов рецептов, содержащих найденные ингредиенты
+        var recipeIdsWithIngredients = ingredients
+            .Select(ingredient => ingredient.RecipeId)
+            .Distinct();
+
+        // Поиск рецептов, содержащих найденные ингредиенты
+        var recipesByIngredients = await _context.Recipes
+            .Where(recipe => recipeIdsWithIngredients.Contains(recipe.Id))
+            .ToListAsync();
+
+        // Объединение результатов поиска по названию рецепта и ингредиентам
+        var combinedResults = recipesByTitle.Concat(recipesByIngredients).Distinct().ToList();
+
+        return Ok(combinedResults);
+    }
+    
+    
     [HttpGet("{id}")]
     [Authorize]
     public async Task<IActionResult> Retrieve([FromRoute] int id)
