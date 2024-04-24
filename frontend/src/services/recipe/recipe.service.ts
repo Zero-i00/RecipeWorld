@@ -43,7 +43,7 @@ class RecipeService {
 	}
 
 	async createRecipe(data: TypeRecipeFormState) {
-		return await axiosWithAuth.post(this.BASE_URL, data)
+		return await axiosWithAuth.post<IRecipe>(this.BASE_URL, data)
 	}
 
 	async updateRecipe(id: number, data: TypeRecipeFormState) {

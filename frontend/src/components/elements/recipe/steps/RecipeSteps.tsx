@@ -30,10 +30,10 @@ export default function RecipeSteps({
 			className={cn(styles.container, className)}
 		>
 			<h1 className={styles.heading}>Instructions:</h1>
-			{data.data.map(step => (
+			{[...data.data.reverse()].map(step => (
 				<div
 					className={styles['step-item']}
-					key={`steo-item-${step.id}`}
+					key={`step-item-${step.id}`}
 				>
 					<div className={styles[`step-order`]}>
 						<p>{step.step}</p>

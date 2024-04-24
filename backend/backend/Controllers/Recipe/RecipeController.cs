@@ -34,11 +34,10 @@ public class RecipesController : ControllerBase
     public async Task<ActionResult> GetRecipeComments([FromRoute] int id)
     {
         var comments = await _context.Comments
-            .Include(c => c.User) // ѕредполагаетс€, что у вас есть навигационное свойство User в модели Comment
+            .Include(c => c.User)
             .Where(comment => comment.RecipeId == id)
             .ToListAsync();
 
-        // ≈сли вы хотите вернуть только определенные пол€ пользовател€, вы можете использовать Select
         var response = comments.Select(comment => new
         {
             id = comment.Id,

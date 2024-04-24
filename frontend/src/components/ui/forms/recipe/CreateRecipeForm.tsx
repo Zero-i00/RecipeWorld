@@ -1,3 +1,5 @@
+import { ingredientService } from '@/services/ingredient.service'
+import { recipeStepService } from '@/services/recipe/recipe-step.service'
 import { recipeService } from '@/services/recipe/recipe.service'
 import { useMutation } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
@@ -8,15 +10,19 @@ import { toast } from 'sonner'
 import Button from '@/components/ui/buttons/Button'
 import Field from '@/components/ui/fields/Field'
 import IngredientsBlock from '@/components/ui/forms/recipe/ingredients-block/IngredientsBlock'
+import { ingredientsData } from '@/components/ui/forms/recipe/ingredients-block/ingredients.data'
 import InstructionBlock from '@/components/ui/forms/recipe/instruction-block/InstructionBlock'
+import { instructionsData } from '@/components/ui/forms/recipe/instruction-block/instructions.data'
 
+import { TypeIngredientFormState } from '@/types/ingredient.types'
+import { TypeRecipeStepFormState } from '@/types/recipe/recipe-step.types'
 import { TypeRecipeFormState } from '@/types/recipe/recipe.types'
 
 import { DASHBOARD_PAGES } from '@/config/pages-url.config'
 
 import styles from './CreateRecipeForm.module.scss'
 
-export interface ICreateRecipeFormProps {
+interface ICreateRecipeFormProps {
 	userId: number
 }
 
@@ -38,18 +44,52 @@ export default function CreateRecipeForm({ userId }: ICreateRecipeFormProps) {
 
 	const { push } = useRouter()
 
+	const { mutate: mutateIngredient } = useMutation({
+		mutationKey: ['ingredient'],
+		mutationFn: (data: TypeIngredientFormState) =>
+			ingredientService.createIngredient(data)
+	})
+
+	const { mutate: mutateInstruction } = useMutation({
+		mutationKey: ['instruction'],
+		mutationFn: (data: TypeRecipeStepFormState) =>
+			recipeStepService.createStep(data)
+	})
+
 	const { mutate, isPending } = useMutation({
 		mutationKey: ['recipe'],
 		mutationFn: (data: TypeRecipeFormState) => recipeService.createRecipe(data),
-		onSuccess() {
+		onSuccess(response) {
 			toast.success('Recipe successfully created')
 			reset()
 			push(DASHBOARD_PAGES.PROFILE)
+			handleConcatIngredients(response.data.id)
+			handleConcatInstructions(response.data.id)
 		},
 		onError() {
 			toast.error('Failed to create recipe')
 		}
 	})
+
+	const handleConcatIngredients = (recipeId: number) => {
+		ingredientsData.forEach(ingredient => {
+			const data: TypeIngredientFormState = {
+				recipeId: recipeId,
+				...ingredient
+			}
+			mutateIngredient(data)
+		})
+	}
+
+	const handleConcatInstructions = (recipeId: number) => {
+		instructionsData.forEach(instruction => {
+			const data: TypeRecipeStepFormState = {
+				recipeId: recipeId,
+				...instruction
+			}
+			mutateInstruction(data)
+		})
+	}
 
 	const onSubmit: SubmitHandler<TypeRecipeFormState> = data => {
 		mutate(data)
@@ -60,6 +100,7 @@ export default function CreateRecipeForm({ userId }: ICreateRecipeFormProps) {
 			<header className={styles['form-header']}>
 				<h1>Create new Recipe</h1>
 				<Button
+					isLoading={isPending}
 					type={`button`}
 					onClick={handleSubmit(onSubmit)}
 				>
@@ -103,8 +144,8 @@ export default function CreateRecipeForm({ userId }: ICreateRecipeFormProps) {
 						error={errors.description}
 					/>
 				</div>
-				<IngredientsBlock userId={userId} />
-				<InstructionBlock userId={userId} />
+				<IngredientsBlock item={undefined} />
+				<InstructionBlock item={undefined} />
 
 				<div className={styles.field}>
 					<h1 className={styles['field-title']}>Serving:</h1>

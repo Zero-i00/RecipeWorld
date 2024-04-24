@@ -1,0 +1,20 @@
+
+.container {
+  @apply w-full flex flex-col gap-4 my-8;
+
+  .heading {
+    @apply text-base text-black font-bold;
+  }
+
+  .instruction-item {
+    @apply flex flex-col justify-start items-start py-2 px-4 gap-4;
+
+    .step {
+      @apply text-black text-lg font-bold;
+    }
+
+    .text {
+      @apply text-gray text-sm;
+    }
+  }
+}
