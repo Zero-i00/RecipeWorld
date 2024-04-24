@@ -26,7 +26,7 @@ class RecipeService {
 
 	async search(query: string) {
 		return await axiosClassic.get<IRecipe[]>(
-			`${this.BASE_URL}/search?=${query}`
+			`${this.BASE_URL}/search?query=${query}`
 		)
 	}
 

@@ -7,6 +7,7 @@ import React from 'react'
 import RecipesContainer from '@/components/elements/RecipesContainer'
 import Layout from '@/components/layout/Layout'
 import Loader from '@/components/ui/Loader'
+import Search from '@/components/ui/search/Search'
 
 interface ISearchProductProps {
 	query: string
@@ -44,6 +45,9 @@ export default function SearchProducts({ query }: ISearchProductProps) {
 
 	return (
 		<Layout>
+			<div className={`mb-8`}>
+				<Search item={undefined} />
+			</div>
 			<RecipesContainer item={data.data} />
 		</Layout>
 	)
